@@ -1,0 +1,45 @@
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.list-header__title {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.ant-select.list-header__filters {
+  width: 10rem;
+  margin: auto 1rem;
+}
+
+
+.task-item {
+  display: flex;
+  width: calc(100% - 10%);
+  margin: auto;
+}
+
+.task-item--done {
+  text-decoration: line-through;
+}
+
+.task-item__data {
+  flex-grow: 1;
+}
+
+.task-item__title {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.task-item__description {
+  font-size: 1.4rem;
+  color: #666;
+}
+
+.task-item__switch {
+  align-self: center;
+}

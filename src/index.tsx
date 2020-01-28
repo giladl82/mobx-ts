@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './Containers/App';
+import { Provider, createStore } from './Store';
+import { configure } from 'mobx';
+
 import * as serviceWorker from './serviceWorker';
-import { Provider } from './Store';
-import TasksStore from './Store/TaskStore';
+
+import './index.css'
+import 'antd/dist/antd.css';
+
+// configure({ enforceActions: 'always' });
 
 ReactDOM.render(
-  <Provider
-    value={{
-      tasks: new TasksStore()
-    }}
-  >
+  <Provider value={createStore()}>
     <App />
   </Provider>,
   document.getElementById('root')

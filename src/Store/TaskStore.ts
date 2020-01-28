@@ -2,7 +2,7 @@ import { observable, action, computed } from 'mobx';
 import Task from '../Models/Task';
 
 export default class TasksStore {
-  @observable.shallow list: Task[] = [];
+  @observable list: Task[] = [];
 
   constructor(list: Task[] = [new Task('Task1', 'Task1 description')]) {
     this.setTasks(list);

@@ -1,38 +1,27 @@
-.App {
-  text-align: center;
+.ant-layout.main-layout {
+  background-color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-header--fixed {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-content {
+  margin: calc(64px + 5%) 5%;
+  width: calc(100vw - 10%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main-footer--fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  z-index: 1;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-footer__my-contacts {
+  color: #ccc;
+  font-size: 1.2rem;
 }
