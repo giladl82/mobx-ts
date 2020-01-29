@@ -1,10 +1,10 @@
 import React from 'react';
 import { Modal, Button, Form, Input } from 'antd';
-import { FormComponentProps, FormCreateOption } from 'antd/lib/form';
+import { FormComponentProps } from 'antd/lib/form';
 
 interface AddTaskProps extends FormComponentProps {
   onCancel(): void;
-  onSubmit(values:any): void;
+  onSubmit(values: any): void;
   isVisible: boolean;
 }
 
@@ -16,7 +16,8 @@ const AddModalTask = (props: AddTaskProps) => {
 
     props.form.validateFields((err, values) => {
       if (!err) {
-        onSubmit(values)
+        onSubmit(values);
+        props.form.resetFields();
       }
     });
   };

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './Containers/App';
+import App from './Components/App';
 import { Provider, createStore } from './Store';
 import { configure } from 'mobx';
 
@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import './index.css'
 import 'antd/dist/antd.css';
 
-// configure({ enforceActions: 'always' });
+configure({ enforceActions: 'always' });
 
 ReactDOM.render(
   <Provider value={createStore()}>

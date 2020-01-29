@@ -3,12 +3,12 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '../../Store';
 import ListHeader from './ListHeader';
 import ListItem from './ListItem';
-import AddNewModal from './AddTaskModal';
+import AddTaskModal from './AddTaskModal';
 import { List } from 'antd';
 import Task from '../../Models/Task';
 import './Tasks.css';
 
-const TasksList = () => {
+const Tasks = () => {
   const { tasks } = useStore();
   const [tasksList, setTasksList] = useState(tasks.list);
   const [isNewTaskModalVisible, setIsNewTaskModalVisible] = useState(false);
@@ -38,9 +38,13 @@ const TasksList = () => {
     setFilter(filter);
   };
 
+  const handleDeleteTask = (task:Task) => {
+    tasks.remove(task);
+  }
+
   return (
     <>
-      <AddNewModal
+      <AddTaskModal
         isVisible={isNewTaskModalVisible}
         onCancel={() => {
           setIsNewTaskModalVisible(false);
@@ -53,12 +57,12 @@ const TasksList = () => {
       />
       <List
         header={<ListHeader onAddNewTask={handleAddNewTaskClick} onFilterTasks={handleFilterTasks} />}
-        footer={<div>{`${tasks.countUnDone} / ${tasks.count}`}</div>}
+        footer={<div>{`${tasks.countDone} / ${tasks.count}`}</div>}
         bordered
         dataSource={tasksList}
         renderItem={item => (
           <List.Item>
-            <ListItem task={item} />
+            <ListItem task={item} onDeleteTask={handleDeleteTask} />
           </List.Item>
         )}
       />
@@ -66,4 +70,4 @@ const TasksList = () => {
   );
 };
 
-export default observer(TasksList);
+export default observer(Tasks);

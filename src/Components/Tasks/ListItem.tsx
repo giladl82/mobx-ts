@@ -1,17 +1,19 @@
 import React from 'react';
 import Task from '../../Models/Task';
 import { observer } from 'mobx-react-lite';
-import { Switch, Icon } from 'antd';
+import { Switch, Icon, Button } from 'antd';
 
 interface Props {
   task: Task;
+  onDeleteTask(task: Task): void;
 }
 
-const TaskListItem = ({ task }: Props) => {
-  const itemCss = [
-    "task-item",
-    task.isDone && "task-item--done"
-  ].join(' ')
+const TaskListItem = ({ task, onDeleteTask }: Props) => {
+  const itemCss = ['task-item', task.isDone && 'task-item--done'].join(' ');
+
+  const handleDeleteTask = () => {
+    onDeleteTask(task);
+  };
 
   return (
     <div className={itemCss}>
@@ -21,6 +23,7 @@ const TaskListItem = ({ task }: Props) => {
           <i>{task.description}</i>
         </div>
       </div>
+      <Button className="task-item__delete" icon="delete" type="link" onClick={handleDeleteTask}></Button>
       <Switch
         className="task-item__switch"
         onChange={task.toggleStatus}

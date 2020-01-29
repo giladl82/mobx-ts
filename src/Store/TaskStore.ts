@@ -1,11 +1,13 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, runInAction } from 'mobx';
 import Task from '../Models/Task';
 
 export default class TasksStore {
   @observable list: Task[] = [];
 
   constructor(list: Task[] = [new Task('Task1', 'Task1 description')]) {
-    this.setTasks(list);
+    runInAction(() => {
+      this.setTasks(list);
+    })
   }
 
   @action setTasks = (list: Task[]) => {

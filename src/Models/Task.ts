@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, runInAction } from 'mobx';
 
 export default class Task {
   readonly id = Date.now();
@@ -8,8 +8,10 @@ export default class Task {
   @observable isDone: boolean = false;
 
   constructor(title: string, description: string) {
-    this.title = title;
-    this.description = description;
+    runInAction(() => {
+      this.title = title;
+      this.description = description;
+    })
   }
 
   @action toggleStatus = () => {
