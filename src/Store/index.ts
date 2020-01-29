@@ -1,11 +1,14 @@
 import React from 'react';
-import TasksStore from './TaskStore';
+import TasksStore from './TasksStore';
+import ContactsStore from './ContactsStore';
 
 class Store {
   tasks: TasksStore;
+  contacts: ContactsStore;
 
   constructor() {
     this.tasks = new TasksStore();
+    this.contacts = new ContactsStore();
   }
 }
 
