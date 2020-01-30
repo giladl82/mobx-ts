@@ -11,15 +11,35 @@ export class Address {
   city: string = '';
   zipcode: string = '';
   geo: Geo = new Geo();
+
+  constructor(source: Address | null) {
+    if (source !== null) {
+      this.city = source.city;
+      this.street = source.street;
+      this.suite = source.suite;
+      this.zipcode = source.zipcode;
+      this.geo = { ...source.geo };
+    }
+  }
 }
 
 export default class Contact {
-  id = Date.now();
+  suffix:number = Math.floor((Math.random() * 100) + 1)
+  id = Date.now() * this.suffix;
 
   @observable name: string = '';
   @observable phone: string = '';
-  @observable address: Address = new Address();
+  @observable address: Address = new Address(null);
   @observable isFavorite: boolean = false;
+
+  constructor(source: Contact | null) {
+    if (source !== null) {
+      this.name = source.name;
+      this.phone = source.phone;
+      this.isFavorite = source.isFavorite;
+      this.address = new Address(source.address);
+    }
+  }
 
   @action toggleFavorite = () => {
     this.isFavorite = !this.isFavorite;
@@ -27,5 +47,9 @@ export default class Contact {
 
   @computed get fullAddress() {
     return `${this.address.street} ${this.address.suite}, ${this.address.city}`;
+  }
+
+  @computed get avatar() {
+    return `https://randomuser.me/api/portraits/thumb/women/${this.suffix}.jpg`;
   }
 }

@@ -9,7 +9,7 @@ export default class ContactsStore {
     const contacts: Contact[] = await fetchContacts();
 
     runInAction(() => {
-      this.list = contacts;
+      this.list = contacts.map(c => new Contact(c));
     });
   };
 }

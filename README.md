@@ -1,18 +1,22 @@
-# My Tasks project
+# My Simple Mbox + TS project!
 
 ## Project goal
 
-This project main goal is, for me to learn Mobx and Typescript and Ant Design using React.
+This project main goal is, for me to learn Mobx and Typescript with Ant Design using React.
 
 ## Description and features
 
-A user can log in (username: 'Gilad', password: '123456')
+It is a small project with two simple stores
 
-He can manage his `Contact`'s
+1. Tasks - local data
+2. Contacts - remote data ([jsonplaceholder](https://jsonplaceholder.typicode.com/users))
 
-He can sort and filter his `Contact`'s
+I've merged them into a single main store and combined it with the React Context API.
 
-He can manage his `Task`s list
+Both stores are represented by its own page with its own data view.
 
-He can change the sort filter his `Task`s
+___
+
+__I'll be happy to get some code review from who ever like to review it.__
+
 

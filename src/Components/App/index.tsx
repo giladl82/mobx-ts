@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from 'antd';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import AppHeader from './Header'
+import AppHeader from './Header';
 import Tasks from '../Tasks';
 import Contacts from '../Contacts';
 
@@ -13,11 +13,22 @@ const App = () => {
   return (
     <Router>
       <Layout className="main-layout">
-        <Header className="main-header--fixed"><AppHeader /></Header>
+        <Header className="main-header--fixed">
+          <AppHeader />
+        </Header>
         <Content className="main-content">
           <Switch>
             <Route exact path="/">
-              {<div>Home</div>}
+              {/*
+                I know this code is here and not in its own file.
+                I'm OK with it (in this project only 😜)
+              */}
+              {
+                <div className="home-page">
+                  <h1 className="home-page__title">Welcome to "My Simple Mbox + TS project!"</h1>
+                  <img src="https://media.makeameme.org/created/look-at-all-d99c36831a.jpg" alt="" />
+                </div>
+              }
             </Route>
             <Route exact path="/tasks">
               <Tasks />
